@@ -1,0 +1,4 @@
+syntax:glob
+.idea/
+cmake-build-debug/
+test/
