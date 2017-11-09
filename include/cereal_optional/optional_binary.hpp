@@ -10,7 +10,7 @@ template<class T, class TV>
 void prologue(BinaryInputArchive &, OptionalNameValuePair<T, TV> const &) { }
 
 template<class T, class TV>
-void epilogue(BinaryInputArchive &, OptionalNameValuePair<T, TV> const &) { }
+void epilogue(BinaryOutputArchive &, OptionalNameValuePair<T, TV> const &) { }
 
 template<class T, class TV>
 void prologue(BinaryOutputArchive &, OptionalNameValuePair<T, TV> const &) { }
