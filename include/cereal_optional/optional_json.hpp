@@ -37,6 +37,7 @@ void CEREAL_LOAD_FUNCTION_NAME(JSONInputArchive &archive, OptionalNameValuePair<
 /// @param nvp Optional NVP to save
 template<class T, class TV>
 void CEREAL_SAVE_FUNCTION_NAME(JSONOutputArchive &archive, OptionalNameValuePair<T, TV> const &nvp) {
+    archive.setNextName(nvp.name);
     archive(nvp.value);
 }
 
