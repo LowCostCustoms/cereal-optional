@@ -26,7 +26,7 @@ void CEREAL_LOAD_FUNCTION_NAME(JSONInputArchive &archive, OptionalNameValuePair<
     try {
         archive.setNextName(nvp.name);
         archive(nvp.value);
-    } catch (cereal::Exception &e) {
+    } catch (cereal::Exception &) {
         nvp.value = std::move(nvp.defaultValue);
         archive.setNextName(nullptr);
     }
