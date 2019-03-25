@@ -26,8 +26,10 @@ void CEREAL_LOAD_FUNCTION_NAME(JSONInputArchive &archive, OptionalNameValuePair<
     try {
         archive.setNextName(nvp.name);
         archive(nvp.value);
-    } catch (cereal::Exception &e) {
+    } catch (cereal::Exception &) {
+        if constexpr(!std::is_same<TV, void>::value) {
         nvp.value = std::move(nvp.defaultValue);
+        }
         archive.setNextName(nullptr);
     }
 }
@@ -37,6 +39,7 @@ void CEREAL_LOAD_FUNCTION_NAME(JSONInputArchive &archive, OptionalNameValuePair<
 /// @param nvp Optional NVP to save
 template<class T, class TV>
 void CEREAL_SAVE_FUNCTION_NAME(JSONOutputArchive &archive, OptionalNameValuePair<T, TV> const &nvp) {
+    archive.setNextName(nvp.name);
     archive(nvp.value);
 }
 

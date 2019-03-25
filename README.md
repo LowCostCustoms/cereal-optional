@@ -20,6 +20,7 @@ struct MyAwesomeStruct {
   void serialize(A &archive) {
     archive(CEREAL_OPTIONAL_NVP(optional)
       // or CEREAL_OPTIONAL_NVP(optional, "my default value")
+      // or cereal::make_optional_nvp("foo", optional)
       // or cereal::make_optional_nvp("foo", optional, "my default value")
       );
   }
